@@ -6,7 +6,7 @@ CREATE TABLE public.account
          first_name VARCHAR(100) NOT NULL,
          last_name VARCHAR(100) NOT NULL,
          is_admin BOOLEAN NOT NULL,
-         is_active BOOLEAN NOT NULL
+         is_active BOOLEAN NOT NULL,
          token VARCHAR NOT NULL -- will assist in signing up new users
 );
 
@@ -20,7 +20,6 @@ CREATE TABLE public.location
 (
          id SERIAL NOT NULL PRIMARY KEY,
          name VARCHAR(100) NOT NULL UNIQUE,
-         -- notes TEXT, --might use in a later version
          area_id VARCHAR(20) NOT NULL REFERENCES public.area(id)
 );
 
@@ -67,8 +66,8 @@ CREATE TABLE public.wo_note
 -- test data --
 
 -- user --
-INSERT INTO public.account (username, password, first_name, last_name, is_admin, is_active) VALUES ('jthompson', '$2y$10$b6VNUrxEi7L4FBFjNcF/feSmv62lRNA71zazXdg670YjUabdCtSZa', 'Jordon', 'Thompson', TRUE, TRUE);
-INSERT INTO public.account (username, password, first_name, last_name, is_admin, is_active) VALUES ('sporter', '$2y$10$b6VNUrxEi7L4FBFjNcF/feSmv62lRNA71zazXdg670YjUabdCtSZa', 'Shawn', 'Porter', FALSE, TRUE);
+INSERT INTO public.account (username, password, first_name, last_name, is_admin, is_active, token) VALUES ('jthompson', 'password1', 'Jordon', 'Thompson', TRUE, TRUE, 'A1B2C3D4E5');
+INSERT INTO public.account (username, password, first_name, last_name, is_admin, is_active, token) VALUES ('tester', 'password1', 'Tester', 'tester', TRUE, TRUE, '0123456789');
 
 -- Area --
 INSERT INTO public.area (id, name) VALUES ('RAN', 'Randlett');
@@ -110,10 +109,10 @@ INSERT INTO public.device (name, device_id, is_sched, frequency, type_id, locati
 INSERT INTO public.device (name, device_id, is_sched, frequency, type_id, location_id) VALUES ('Oil Tank 1', '1000088899', FALSE, 182, 'LVL_SNS', 2);
 
 -- Workorder --
-INSERT INTO public.workorder (start_date, priority, description, reoccurring, device_id, user_id) VALUES (NOW(), 1, 'Calibrate Meter', FALSE, 1, 1);
-INSERT INTO public.workorder (start_date, priority, description, reoccurring, device_id, user_id) VALUES (NOW(), 2, 'Check high temp on Tank sensor', FALSE, 2, 2);
-INSERT INTO public.workorder (start_date, priority, description, reoccurring, device_id, user_id) VALUES (NOW(), 2, 'Replace broken board', FALSE, 3, 1);
-INSERT INTO public.workorder (start_date, priority, description, reoccurring, device_id, user_id) VALUES (NOW(), 2, 'Float is stuck', FALSE, 3, 1);
+INSERT INTO public.workorder (create_date, start_date, priority, description, reoccurring, device_id, user_id) VALUES (NOW(), NOW(), 1, 'Calibrate Meter', FALSE, 1, 1);
+INSERT INTO public.workorder (create_date, start_date, priority, description, reoccurring, device_id, user_id) VALUES (NOW(), NOW(), 2, 'Check high temp on Tank sensor', FALSE, 2, 2);
+INSERT INTO public.workorder (create_date, start_date, priority, description, reoccurring, device_id, user_id) VALUES (NOW(), NOW(), 2, 'Replace broken board', FALSE, 3, 1);
+INSERT INTO public.workorder (create_date, start_date, priority, description, reoccurring, device_id, user_id) VALUES (NOW(), NOW(), 2, 'Float is stuck', FALSE, 3, 1);
 
 -- Workorder Notes --
 INSERT INTO public.wo_note (note, date, wo_id, user_id) VALUES ('This is my first test note', NOW(), 1, 1);
