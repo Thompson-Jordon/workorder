@@ -6,8 +6,7 @@ const pool = new Pool({ connectionString: db });
 exports.getAllUsers = callback => {
   let query = {
     text:
-      "SELECT id, username, first_name, last_name, isAdmin, isActive FROM account",
-    value: [id]
+      "SELECT id, username, first_name, last_name, is_admin, is_active FROM account",
   };
 
   pool.query(query, (err, res) => {

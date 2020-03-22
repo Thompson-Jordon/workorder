@@ -27,6 +27,7 @@ app.get("/Workorder", workorders.getWorkorder);
 app.post("/Workorder", workorders.createWorkorder);
 
 // Areas
+app.get("/Areas", areas.getAreas);
 app.post("/Area", areas.createArea);
 
 // Locations
@@ -44,6 +45,7 @@ app.get("/Note", notes.getNotes);
 app.post("/Note", notes.creatNote);
 
 // Users
+app.get("/Users", users.getUsers);
 app.get("/User", users.getUser);
 app.post("/User", users.createUser);
 
