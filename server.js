@@ -1,25 +1,33 @@
 const express = require("express");
 const path = require("path");
-const PORT = process.env.PORT || 5000;
+const session = require("express-session");
 let app = express();
+
+const PORT = process.env.PORT || 5000;
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(session({ secret: "ssshhhhh" }));
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 // Controllers
-let workorders = require("./controller/workorderController");
-let locations = require("./controller/locationController");
-let devices = require("./controller/deviceController");
-let areas = require("./controller/areaController");
-let notes = require("./controller/noteController");
-let users = require("./controller/userController");
+let workorders = require("./controllers/workorderController");
+let locations = require("./controllers/locationController");
+let devices = require("./controllers/deviceController");
+let types = require("./controllers/typeController");
+let areas = require("./controllers/areaController");
+let notes = require("./controllers/noteController");
+let users = require("./controllers/userController");
 
 // Main page
-app.get("/", (req, res) => res.render("pages/index"));
+app.get("/", (req, res) => {
+  //  sess = req.session;
+  //  sess.username;
+  res.render("pages/index");
+});
 
 // Workorders
 app.get("/Workorders", workorders.getWorkorders);
@@ -39,6 +47,9 @@ app.post("/Location", locations.createLocation);
 app.get("/Devices", devices.getDevices);
 app.get("/Device", devices.getDevice);
 app.post("/Device", devices.createDevice);
+
+// Types
+app.get("/Types", types.getTypes);
 
 // Notes
 app.get("/Note", notes.getNotes);

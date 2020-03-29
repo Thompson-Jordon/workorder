@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { Pool } = require("pg");
-const db = process.env.DATABASE_URL || process.env.LOCALDB_URL;
+const db = process.env.DATABASE_URL;
 const pool = new Pool({ connectionString: db });
 
 exports.getAllUsers = callback => {

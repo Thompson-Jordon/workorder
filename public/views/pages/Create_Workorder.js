@@ -41,7 +41,7 @@ let Create_Workorder = {
      </div>
      <div class="form-group">
         <label for="device">Device:</label>
-        <select type="text" id="device" name="device" class="form-control" required>
+        <select type="text" id="device_id" name="device" class="form-control" required>
            <option value="" disabled selected>Select a location first</option>
         </select>
      </div>

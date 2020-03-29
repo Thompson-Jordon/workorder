@@ -25,7 +25,7 @@ let Locations = {
              </thead>
              <tbody id="tableBody">`;
     rows.forEach(row => {
-      view += `<tr class="clickable-row" href="#/location_details?id=${row.id}">
+      view += `<tr class="clickable-row" href="#/location_details/${row.id}">
        <td>${row.location}</td>
        <td>${row.area}</td>
     </tr>`;

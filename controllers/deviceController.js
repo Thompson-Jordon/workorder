@@ -15,7 +15,7 @@ exports.getDevices = (req, res) => {
 exports.getDevice = (req, res) => {
   console.log("Trying to get device...");
   let id = req.query.id;
-  model.getDevicesByDeviceId(id, (error, results) => {
+  model.getDeviceByDeviceId(id, (error, results) => {
     if (error) {
       console.log("Error: " + error);
     } else {

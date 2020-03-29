@@ -8,10 +8,22 @@ $(document).ready($ => {
 $(document).ready(() => {
   $("body").on("click", () => {
     $("#location").change(() => {
-      var id = $(this).val();
+      var id = $("#location").val();
 
-      //ajax
-      $("#device").load("get_devices.php", { locationID: id });
+      fetch(`/Devices?id=${id}`, { method: "GET" }).then(res => {
+        res.text().then(result => {
+          let rows = JSON.parse(result);
+          let string = "";
+          rows.forEach(device => {
+          string += `<option value="${device.id}">${device.name}</option>`;
+        });
+        if (string == "") {
+          string +=
+            "<option value='NULL'>This location has no devices</option>";
+        }
+        $("#device").html(string);
+        });
+      });
     });
   });
 });
