@@ -38,7 +38,7 @@ let Create_Workorder = {
       view += `<option value="${row.id}">${row.location}</option>`;
     });
     view += `</select>
-     </div>
+     </div> 
      <div class="form-group">
         <label for="device">Device:</label>
         <select type="text" id="device_id" name="device" class="form-control" required>
