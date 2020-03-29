@@ -1,5 +1,5 @@
 import Utils from "../../services/utils.js";
-
+ 
 let getLocation = async id => {
   try {
     let response = await fetch(`/Location?id=${id}`, { method: "GET" });

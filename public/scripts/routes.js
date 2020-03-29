@@ -1,13 +1,13 @@
 "use strict"; // To keep code clean
 
 // import pages
-import Workorders from "../views/pages/Workorders.js";
-import Locations from "../views/pages/Locations.js";
-import Create_Location from "../views/pages/Create_Location.js";
-import Create_Workorder from "../views/pages/Create_Workorder.js";
-import Error404 from "../views/pages/Error404.js";
-import Location_Details from "../views/pages/Location_Details.js";
-import Create_Device from "../views/pages/Create_Device.js";
+import Workorders from        "../views/pages/Workorders.js";
+import Locations from         "../views/pages/Locations.js";
+import Create_Location from   "../views/pages/Create_Location.js";
+import Create_Workorder from  "../views/pages/Create_Workorder.js";
+import Error404 from          "../views/pages/Error404.js";
+import Location_Details from  "../views/pages/Location_Details.js";
+import Create_Device from     "../views/pages/Create_Device.js";
 
 // services
 import Utils from "../services/utils.js";
