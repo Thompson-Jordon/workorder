@@ -51,7 +51,7 @@ let Create_Device = {
              <input type="text" id="frequency" name="frequency" class="form-control" value="0">
           </div>
           <input type="hidden" id="location" name="location" value="${location_id}">
-          <button type="submit" id="deviceBtn" class="btn btn-info">Submit</button>
+          <button type="button" id="deviceBtn" class="btn btn-info">Submit</button>
        </div>
       </form>`;
 

@@ -1,25 +1,28 @@
 "use strict"; // To keep code clean
 
 // import pages
+import Error404 from          "../views/pages/Error404.js";
 import Workorders from        "../views/pages/Workorders.js";
 import Locations from         "../views/pages/Locations.js";
-import Create_Location from   "../views/pages/Create_Location.js";
 import Create_Workorder from  "../views/pages/Create_Workorder.js";
-import Error404 from          "../views/pages/Error404.js";
-import Location_Details from  "../views/pages/Location_Details.js";
+import Create_Location from   "../views/pages/Create_Location.js";
 import Create_Device from     "../views/pages/Create_Device.js";
+import Workorder_Details from "../views/pages/Workorder_Details.js";
+import Location_Details from  "../views/pages/Location_Details.js";
 
 // services
 import Utils from "../services/utils.js";
 
 // Supported Routes
 const routes = { 
+  "/": Workorders,
   "/workorders": Workorders,
   "/locations": Locations,
   "/create_location": Create_Location,
   "/create_workorder": Create_Workorder,
+  "/create_device/:id": Create_Device,
   "/location_details/:id": Location_Details,
-  "/create_device/:id": Create_Device
+  "/workorder_details/:id": Workorder_Details
 };
 
 // handling content router

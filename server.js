@@ -24,15 +24,20 @@ let users = require("./controllers/userController");
 
 // Main page
 app.get("/", (req, res) => {
-  //  sess = req.session;
-  //  sess.username;
-  res.render("pages/index");
+  // if (req.session.username) {
+    res.render("pages/index");
+  // } else {
+  //   res.render("pages/login");
+  // }
 });
+
+app.post("/login", logIn);
 
 // Workorders
 app.get("/Workorders", workorders.getWorkorders);
 app.get("/Workorder", workorders.getWorkorder);
 app.post("/Workorder", workorders.createWorkorder);
+app.post("/CompleteWorkorder", workorders.completeWorkorder);
 
 // Areas
 app.get("/Areas", areas.getAreas);
@@ -52,12 +57,34 @@ app.post("/Device", devices.createDevice);
 app.get("/Types", types.getTypes);
 
 // Notes
-app.get("/Note", notes.getNotes);
+app.get("/Notes", notes.getNotes);
 app.post("/Note", notes.creatNote);
 
 // Users
 app.get("/Users", users.getUsers);
-app.get("/User", users.getUser);
+app.get("/User", users.getUserById);
 app.post("/User", users.createUser);
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+function logIn(req, res) {
+  let username = req.body.username;
+  let password = req.body.password;
+  users.getUserByUsername(req, res, results => {
+    if (results == "undefined") {
+      console.log("User does not exist");
+    } else {
+      if (password == results.password) {
+        session.username = results.username;
+        session.first_name = results.first_name;
+        session.last_name = results.last_name;
+        session.user_id = results.user_id;
+        session.is_admin = results.is_admin;
+        session.logged_in = true;
+        res.locations("/");
+      } else {
+        console.log("Password is incorrect");
+      }
+    }
+  });
+}

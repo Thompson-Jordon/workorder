@@ -43,7 +43,7 @@ let Workorders = {
           </thead>
           <tbody id="tableBody">`;
     wo.forEach(row => {
-      view += `<tr class="clickable-row" data-href="#/wo_details?id=${row.id}">
+      view += `<tr class="clickable-row" href="#/workorder_details/${row.id}">
            <td>${row.id}</td>
            <td>${row.location}</td>
            <td>${row.device}</td>

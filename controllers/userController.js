@@ -11,14 +11,26 @@ exports.getUsers = (req, res) => {
   });
 };
 
-exports.getUser = (req, res) => {
-  console.log("Trying to get User...");
+exports.getUserById = (req, res) => {
   let id = req.body.user_id;
+  console.log("Trying to get User:", id);
   model.getUserById(id, (error, results) => {
     if (error) {
       console.log("Error: " + error);
     } else {
       res.json(results);
+    }
+  });
+};
+
+exports.getUserByUsername = (req, res, callback) => {
+  let username = req.body.username;
+  console.log("Trying to get " + username);
+  model.getUserByUsername(username, (error, results) => {
+    if (error) {
+      console.log("Error: " + error);
+    } else {
+      callback(results);
     }
   });
 };

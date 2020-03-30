@@ -1,28 +1,28 @@
 $(document).ready($ => {
-  $("body").on("click", ".clickable-row", () => {
-    window.location = $(this).data("href");
+  $("body").on("click", ".clickable-row", (event) => {
+    window.location = event.target.parentNode.attributes.href.value;
   });
 });
 
 // workorder dropdowns
 $(document).ready(() => {
-  $("body").on("click", () => {
-    $("#location").change(() => {
-      var id = $("#location").val();
+  $("body").on("change", "#location", () => {
+    var id = $("#location").val();
 
-      fetch(`/Devices?id=${id}`, { method: "GET" }).then(res => {
-        res.text().then(result => {
-          let rows = JSON.parse(result);
-          let string = "";
-          rows.forEach(device => {
+    fetch(`/Devices?id=${id}`, { method: "GET" }).then(res => {
+      res.text().then(result => {
+        let rows = JSON.parse(result);
+        let string = "";
+        rows.forEach(device => {
           string += `<option value="${device.id}">${device.name}</option>`;
         });
         if (string == "") {
           string +=
-            "<option value='NULL'>This location has no devices</option>";
+            "<option value=''>This location has no devices</option>";
+        } else {
+          string = "<option value=''>Select a device...</option>" + string;
         }
-        $("#device").html(string);
-        });
+        $("#device_id").html(string);
       });
     });
   });
@@ -30,11 +30,11 @@ $(document).ready(() => {
 
 // function for search filter
 $(document).ready(() => {
-  $("#myInput").on("keyup", () => {
-    var value = $(this)
+  $("body").on("keyup", "#myInput", (event) => {
+    var value = $(event.target)
       .val()
       .toLowerCase();
-    $("#tableBody tr").filter(() => {
+    $("#tableBody tr").filter((event) => {
       $(this).toggle(
         $(this)
           .text()

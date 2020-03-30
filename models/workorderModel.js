@@ -34,11 +34,11 @@ exports.getWorkorderById = (id, callback) => {
   });
 };
 
-exports.insertWorkorder = (body, callback) => {
+exports.insertWorkorder = (params, callback) => {
   let query = {
     text:
       "INSERT INTO workorder (create_date, start_date, device_id, user_id, description, priority, reoccurring) VALUES (NOW(), NOW(), $1, $2, $3, $4, false)",
-    values: [body.device_id, body.user_id, body.description, body.priority]
+    values: [params.device_id, params.user_id, params.description, params.priority]
   };
 
   pool.query(query, (err, res) => {
@@ -50,3 +50,19 @@ exports.insertWorkorder = (body, callback) => {
     }
   });
 };
+
+exports.completeWorkorderById = (id, callback) => {
+  let query = {
+    text:"UPDATE workorder SET end_date=now() WHERE id=$1",
+    values: [id]
+  }
+
+  pool.query(query, (err, res) => {
+    if (err) {
+      console.log(err.stack);
+      callback(err, null);
+    } else {
+      callback(null, { success: true });
+    }
+  });
+}

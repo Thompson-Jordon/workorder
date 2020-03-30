@@ -80,3 +80,46 @@ $(document).ready(() => {
     });
   });
 });
+
+// create note
+$(document).ready(() => {
+  $("body").on("click", "#addNote", () => {
+    let myform = $("#addNote");
+    myform.on("submit", e => {
+      e.preventDefault();
+      e.stopPropagation();
+      let new_note = $("#new_note").val();
+      let wo_id = $("#wo_id").val();
+      let user_id = 1; // TODO: $("#user_id").val();
+      let params ={
+        new_note: new_note,
+        wo_id: wo_id,
+        user_id: user_id
+      }
+
+      $.post("/Note", params, res => {
+        window.location.href = `#/Workorder_Details/${wo_id}`;
+      }).fail(() => {
+        display.html("<div>" + JSON.stringify(ERROR) + "</div>");
+      });
+    });
+  });
+});
+
+// create note
+$(document).ready(() => {
+  $("body").on("click", "#completeWO", () => {
+    let myform = $("#completeWO");
+    myform.on("submit", e => {
+      e.preventDefault();
+      $('#completeWO').unbind("submit").submit();
+      let id = $("#wo_id").val();
+
+      $.post("/CompleteWorkorder", {id:id}, res => {
+        window.location.href = `#/Workorder_Details/${id}`;
+      }).fail(() => {
+        display.html("<div>" + JSON.stringify(ERROR) + "</div>");
+      });
+    });
+  });
+});

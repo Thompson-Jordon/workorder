@@ -17,7 +17,12 @@ exports.creatNote = (req, res) => {
   let note = req.body.new_note;
   let wo_id = req.body.wo_id;
   let user_id = req.body.user_id;
-  model.insertNote(note, wo_id, user_id, (error, results) => {
+  params = {
+    note: note,
+    wo_id: wo_id,
+    user_id: user_id
+  }
+  model.insertNote(params, (error, results) => {
     if (error) {
       console.log("Error: " + error);
     } else {

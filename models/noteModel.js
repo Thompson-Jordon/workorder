@@ -20,11 +20,11 @@ exports.getNotesByWOId = (id, callback) => {
   });
 };
 
-exports.insertNote = (note, wo_id, user_id, callback) => {
+exports.insertNote = (params, callback) => {
   let query = {
     text:
       "INSERT INTO wo_note (note, date, wo_id, user_id) VALUES ($1, NOW(), $2, $3)",
-    values: [note, wo_id, user_id]
+    values: [params.note, params.wo_id, params.user_id]
   };
 
   pool.query(query, (err, res) => {
