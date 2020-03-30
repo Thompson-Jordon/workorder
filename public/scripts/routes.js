@@ -1,25 +1,25 @@
 "use strict"; // To keep code clean
 
 // import pages
-import workorders from        "../views/pages/workorders.js";
-import locations from         "../views/pages/locations.js";
-import create_location from   "../views/pages/create_location.js";
-import create_workorder from  "../views/pages/create_workorder.js";
-import error404 from          "../views/pages/error404.js";
-import location_details from  "../views/pages/location_details.js";
-import create_device from     "../views/pages/create_device.js";
+import Workorders from        "../views/pages/Workorders.js";
+import Locations from         "../views/pages/Locations.js";
+import Create_Location from   "../views/pages/Create_Location.js";
+import Create_Workorder from  "../views/pages/Create_Workorder.js";
+import Error404 from          "../views/pages/Error404.js";
+import Location_Details from  "../views/pages/Location_Details.js";
+import Create_Device from     "../views/pages/Create_Device.js";
 
 // services
 import Utils from "../services/utils.js";
 
 // Supported Routes
 const routes = {
-  "/workorders": workorders,
-  "/locations": locations,
-  "/create_location": create_location,
-  "/create_workorder": create_workorder,
-  "/location_details/:id": location_details,
-  "/create_device/:id": create_device
+  "/workorders": Workorders,
+  "/locations": Locations,
+  "/create_location": Create_Location,
+  "/create_workorder": Create_Workorder,
+  "/location_details/:id": Location_Details,
+  "/create_device/:id": Create_Device
 };
 
 // handling content router
@@ -37,7 +37,7 @@ const router = async () => {
 
   // Get the page from the hash of supported routes
   // if the parsed URL is not in the supported list then post 404 page
-  let page = routes[parseURL] ? routes[parseURL] : error404;
+  let page = routes[parseURL] ? routes[parseURL] : Error404;
   content.innerHTML = await page.render();
   await page.after_render();
 };
