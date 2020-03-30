@@ -13,7 +13,7 @@ import Create_Device from     "../views/pages/Create_Device.js";
 import Utils from "../services/utils.js";
 
 // Supported Routes
-const routes = {
+const routes = { 
   "/workorders": Workorders,
   "/locations": Locations,
   "/create_location": Create_Location,
