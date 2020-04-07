@@ -19,14 +19,14 @@ let Workorders = {
           href="#/Create_Workorder"
           role="button"
           >Create Workorder</a
-        >
-        <input
-          class="form-control mb-2 ml-auto"
-          id="myInput"
-          type="text"
-          placeholder="Search.."
-        />
-      </div>
+        >` +
+        // <input
+        //   class="form-control mb-2 ml-auto"
+        //   id="myInput"
+        //   type="text"
+        //   placeholder="Search.."
+        // />
+      `</div>
       <div class="bg-light">
         <table id="myTable" class="table table-striped table-hover table-sm">
           <thead>
@@ -48,7 +48,13 @@ let Workorders = {
            <td>${row.location}</td>
            <td>${row.device}</td>
            <td>${row.start_date}</td>
-           <td>${row.end_date}</td>
+           <td>`;
+           if (row.start == "null") {
+             view += row.end_date;
+           } else {
+             view += "";
+           }
+           view += `</td>
            <td>${row.priority}</td>
            <td>${row.first_name} ${row.last_name}</td>
            <td>${row.description}</td>
