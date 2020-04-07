@@ -11,7 +11,7 @@ let getLocations = async () => {
 let Locations = {
   render: async () => {
     let rows = await getLocations();
-    let view = /*html*/ `<div class="jumbotron jumbotron-fluid bg-secondary">
+    let view = /*html*/ `<div class="jumbotron jumbotron-fluid bg-secondary pt-3">
     <div class="container form-inline border-secondary rounded bg-light py-3">
           <a class="btn btn-info form-control mb-3" href="#/create_location" role="button">Add Location</a>
           <input class="form-control mb-2 ml-auto" id="myInput" type="text" placeholder="Search..">

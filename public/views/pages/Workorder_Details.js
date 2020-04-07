@@ -25,7 +25,7 @@ let Workorder_Details = {
     let id = Utils.parseRequestURL().id;
     let wo = await getWorkorder(id); // Get workorder
     let notes = await getNotes(id);
-    let view = /*html*/ `<div class="jumbotron jumbotron-fluid bg-secondary">
+    let view = /*html*/ `<div class="jumbotron jumbotron-fluid bg-secondary pt-3">
       <div class="container border-secondary rounded bg-light pb-2">
          <h1 class="display-3">Work Order #${id}<echo>
          </h1>
@@ -48,10 +48,10 @@ let Workorder_Details = {
       view += `<form id="addNote" method="post">
                <textarea type="text" id="new_note" name="new_note" cols="40" rows="5"></textarea></br>
                <input type="hidden" id="wo_id" name="wo_id" value="${id}">
-               <input type="button" class="btn btn-info" value="Add Note">
+               <input type="button" id="addNoteBtn" class="btn btn-info" value="Add Note">
             </form>
             <form id="completeWO" method="post">
-               <input type="button" class="btn btn-danger mt-1" value="Complete Work Order">
+               <input type="button" id="completeBtn" class="btn btn-danger mt-1" value="Complete Work Order">
             </form>`;
     }
     view += `</div></div>`;

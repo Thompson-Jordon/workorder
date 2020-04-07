@@ -1,5 +1,5 @@
 <nav class="navbar sticky-top navbar-expand-sm bg-info navbar-dark">
-  <ul class="nav navbar-nav">
+  <ul class="navbar-nav">
     <!-- <li class="">
         <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
       </li> -->
@@ -9,5 +9,23 @@
     <li class="nav-item">
       <a href="#/Locations" class="nav-link">Locations</a>
     </li>
+  </li>
+</ul>
+<ul class="navbar-nav flex-row ml-md-auto">
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><%= first_name %> <%= last_name %> </a>
+    <div class="dropdown-menu">
+       <!-- <a class="dropdown-item" href="change_password.php">Change Password</a> -->
+       <% if (is_admin == true) { %>
+          <a class="dropdown-item" href="#/users">Users</a>
+       <% } %>
+    </div>
+ </li>
+  <form action="/logout" method="post">
+     <li class="nav-item">
+        <input type="submit" name="logout" value="Logout" class="btn btn-light">
+        <input type="hidden" name="loggingOut" value="true">
+     </li>
+  </form>
   </ul>
 </nav>

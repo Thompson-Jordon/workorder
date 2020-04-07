@@ -1,28 +1,34 @@
 "use strict"; // To keep code clean
 
-// import pages
+// services
+import Utils from "../services/utils.js";
+ 
+// pages
 import Error404 from          "../views/pages/Error404.js";
 import Workorders from        "../views/pages/Workorders.js";
 import Locations from         "../views/pages/Locations.js";
+import Users from             "../views/pages/Users.js";
 import Create_Workorder from  "../views/pages/Create_Workorder.js";
 import Create_Location from   "../views/pages/Create_Location.js";
+import Create_User from       "../views/pages/Create_User.js";
 import Create_Device from     "../views/pages/Create_Device.js";
 import Workorder_Details from "../views/pages/Workorder_Details.js";
 import Location_Details from  "../views/pages/Location_Details.js";
-
-// services
-import Utils from "../services/utils.js";
+import Change_Password from   "../views/pages/Change_Password.js";
 
 // Supported Routes
 const routes = { 
-  "/": Workorders,
-  "/workorders": Workorders,
-  "/locations": Locations,
-  "/create_location": Create_Location,
-  "/create_workorder": Create_Workorder,
-  "/create_device/:id": Create_Device,
-  "/location_details/:id": Location_Details,
-  "/workorder_details/:id": Workorder_Details
+  "/"                       : Workorders,
+  "/workorders"             : Workorders,
+  "/locations"              : Locations,
+  "/users"                  : Users,
+  "/workorder_details/:id"  : Workorder_Details,
+  "/location_details/:id"   : Location_Details,
+  "/create_workorder"       : Create_Workorder,
+  "/create_location"        : Create_Location,
+  "/create_user"            : Create_User,
+  "/create_device/:id"      : Create_Device,
+  "/change_password"        : Change_Password,
 };
 
 // handling content router

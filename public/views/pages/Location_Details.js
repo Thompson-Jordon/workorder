@@ -25,7 +25,7 @@ let Location_Details = {
     let id = Utils.parseRequestURL().id;
     let location = await getLocation(id);
     let rows = await getDevices(id);
-    let view = /*html*/ `<div class="jumbotron jumbotron-fluid bg-secondary">
+    let view = /*html*/ `<div class="jumbotron jumbotron-fluid bg-secondary pt-3">
      <div class="container border-secondary rounded bg-light">
         <h1 class="display-3">${location.location}<echo>
         </h1>

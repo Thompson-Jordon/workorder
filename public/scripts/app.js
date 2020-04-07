@@ -1,47 +1,40 @@
-$(document).ready($ => {
-  $("body").on("click", ".clickable-row", (event) => {
-    window.location = event.target.parentNode.attributes.href.value;
-  });
+$(document).on("click", ".clickable-row", event => {
+  window.location = event.target.parentNode.attributes.href.value;
 });
 
 // workorder dropdowns
-$(document).ready(() => {
-  $("body").on("change", "#location", () => {
-    var id = $("#location").val();
+$(document).on("change", "#location", () => {
+  var id = $("#location").val();
 
-    fetch(`/Devices?id=${id}`, { method: "GET" }).then(res => {
-      res.text().then(result => {
-        let rows = JSON.parse(result);
-        let string = "";
-        rows.forEach(device => {
-          string += `<option value="${device.id}">${device.name}</option>`;
-        });
-        if (string == "") {
-          string +=
-            "<option value=''>This location has no devices</option>";
-        } else {
-          string = "<option value=''>Select a device...</option>" + string;
-        }
-        $("#device_id").html(string);
+  fetch(`/Devices?id=${id}`, { method: "GET" }).then(res => {
+    res.text().then(result => {
+      let rows = JSON.parse(result);
+      let string = "";
+      rows.forEach(device => {
+        string += `<option value="${device.id}">${device.name}</option>`;
       });
+      if (string == "") {
+        string += "<option value=''>This location has no devices</option>";
+      } else {
+        string = "<option value=''>Select a device...</option>" + string;
+      }
+      $("#device_id").html(string);
     });
   });
 });
 
 // function for search filter
-$(document).ready(() => {
-  $("body").on("keyup", "#myInput", (event) => {
-    var value = $(event.target)
-      .val()
-      .toLowerCase();
-    $("#tableBody tr").filter((event) => {
-      $(this).toggle(
-        $(this)
-          .text()
-          .toLowerCase()
-          .indexOf(value) > -1
-      );
-    });
+$(document).on("keyup", "#myInput", event => {
+  var value = $(event.target)
+    .val()
+    .toLowerCase();
+  $("#tableBody tr").filter(() => {
+    $(this).toggle(
+      $(this)
+        .text()
+        .toLowerCase()
+        .indexOf(value) > -1
+    );
   });
 });
 

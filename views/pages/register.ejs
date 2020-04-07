@@ -1,28 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <% include ../partials/header %>
-  </head>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+  </head>
   <body>
     <div id="login" class="container pt-5">
       <div id="login-row" class="row justify-content-center align-items-center">
         <div id="login-column" class="col-md-6">
           <div id="login-box" class="col-md-12">
-            <form id="login-form" action="/login" class="form" method="post">
-              <h3 class="text-center text-info">Work Order Login</h3>
+            <form id="changePass" class="form" action="/register" method="post">
+              <h3 class="text-center text-info">Registration</h3>
               <div class="form-group">
-                <label for="username" class="text-info">Username:</label><br />
+                <label for="token" class="text-info"
+                  >Enter token:</label
+                ><br />
                 <input
                   type="text"
-                  name="username"
-                  id="username"
+                  name="token"
+                  id="token"
                   class="form-control"
                   required
                 />
               </div>
               <div class="form-group">
-                <label for="password" class="text-info">Password:</label><br />
+                <label for="password" class="text-info">Enter new password:</label
+                ><br />
                 <input
                   type="password"
                   name="password"
@@ -31,24 +36,23 @@
                   required
                 />
               </div>
-              <div id="register-link" class="text-right">
-                <a href="/register" class="text-info"
-                  >First Time? Register here</a
-                >
+              <div class="form-group">
+                <label for="pass2" class="text-info">Enter new password:</label
+                ><br />
+                <input
+                  type="password"
+                  name="pass2"
+                  id="pass2"
+                  class="form-control"
+                  required
+                />
               </div>
-              <input
-                type="hidden"
-                id="loggingIn"
-                name="loggingIn"
-                value="true"
-              />
               <div class="form-group">
                 <input
                   type="submit"
-                  name="login"
-                  id="loginBtn"
+                  id="changePassBtn"
                   class="btn btn-info btn-md"
-                  value="Login"
+                  value="Submit"
                 />
               </div>
             </form>
@@ -56,7 +60,5 @@
         </div>
       </div>
     </div>
-    <% include ../partials/footer %>
-    <script src="/scripts/login.js"></script>
   </body>
 </html>
