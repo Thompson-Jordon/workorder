@@ -49,10 +49,10 @@ let Workorders = {
            <td>${row.device}</td>
            <td>${row.start_date}</td>
            <td>`;
-           if (row.start == "null") {
+           if (row.end_date != null) {
              view += row.end_date;
-           } else {
-             view += "";
+            } else {
+              view += "";
            }
            view += `</td>
            <td>${row.priority}</td>
