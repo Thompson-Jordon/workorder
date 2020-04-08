@@ -73,21 +73,3 @@ app.post("/logout", users.isAuth, users.logout);
 app.post("/register", users.isNotAuth, users.register);
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
-
-function verifyLogin(req, res, next) {
-  const user = req.session.username;
-  if (req.body.loggingIn == "true") next();
-  if (req.body.loggingOut == "true") next();
-  if (
-    user != "" &&
-    typeof user !== "undefined" &&
-    req.session.logged_in == true
-  ) {
-    next();
-  } else {
-    res.render("pages/login", {
-      success: false,
-      message: "Unauthorized",
-    });
-  }
-}
