@@ -17,11 +17,11 @@ let Create_Location = {
      </div>
   </div>
 
-  <form id="locationForm" method="post">
+  <form id="locationForm">
      <div class="container">
         <div class="form-group">
            <label for="location">Location:</label>
-           <input type="text" id="location" name="location" class="form-control" required>
+           <input type="text" id="newLocation" name="location" class="form-control" required>
         </div>
         <div class="form-group">
            <label for="area">Area:</label>
@@ -30,7 +30,7 @@ let Create_Location = {
     areas.forEach(row => {
       view += `<option value="${row.id}">${row.name}</option>`;
     });
-    view += `</select></div><button id="locationBtn" class="btn btn-info">Submit</button></div></form>`;
+    view += `</select></div><input type="button" id="locationBtn" class="btn btn-info" value="Submit"></div></form>`;
 
     return view;
   },

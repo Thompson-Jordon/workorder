@@ -31,7 +31,7 @@ exports.createLocation = (req, res) => {
     if (error) {
       console.log("Error: " + error);
     } else {
-      res.json(results);
+      res.status(200).json(results);
     }
   });
 };

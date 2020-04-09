@@ -28,7 +28,7 @@ let Create_Workorder = {
      </div>
   </div>
 
-  <form id="workorderForm" method="post">
+  <form id="workorderForm">
      <div class="container">
         <div class="form-group">
            <label for="location">Location:</label>
@@ -66,7 +66,7 @@ let Create_Workorder = {
           <option value="3">3 - Low</option>
        </select>
     </div>
-    <button id="workorderBtn" class="btn btn-info">Submit</button>
+    <input type="button" id="workorderBtn" class="btn btn-info" value="Submit">
  </div>
 </form>`;
 

@@ -7,10 +7,11 @@ const ERROR = { message: "The request failed!" };
 
 // create location
 $(document).on("click", "#locationBtn", () => {
-      let location = $("#location").val();
+      let location = $("#newLocation").val();
       let area = $("#area").val();
 
       $.post("/Location", { location: location, area: area }, res => {
+        console.log(res);
         window.location.href = "#/Locations";
       }).fail(() => {
         display.html("<div>" + JSON.stringify(ERROR) + "</div>");
@@ -31,6 +32,7 @@ $(document).on("click", "#newUserBtn", () => {
   }
 
   $.post("/User", params, res => {
+    console.log(res);
     window.location.href = "#/Users";
   }).fail(() => {
     display.html("<div>" + JSON.stringify(ERROR) + "</div>");
@@ -52,7 +54,8 @@ $(document).on("click", "#workorderBtn", () => {
     priority: priority
   };
 
-  $.post("/workorder", params, res => {
+  $.post("/Workorder", params, res => {
+    console.log(res);
     window.location.href = "#/workorders";
   }).fail(() => {
     display.html("<div>" + JSON.stringify(ERROR) + "</div>");
